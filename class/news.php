@@ -39,10 +39,17 @@
           die("Something went wrong, please make sure you are connected to the Internet");
         }
 
-        // This only sorts for Stockholm right now. 
-        // @TODO: build more logical arrays of town and make a selection
-        // process based on $this->town for this. 
-        return $this->sortOutObjects($rawxml, $this->stockholm_towns);
+        // Check if an array of post-towns in town exists.
+        if ($this->existsTownArray()) {
+
+          // if does set the town array to it. 
+          $array = $this->getTownArray();
+        } elseif (!$this->existsTownArray()) {
+
+          // otherwise it's just this town
+          $array = array($this->town); 
+        }
+        return $this->sortOutObjects($rawxml, $array);
       }
 
       // Lets be strict. 
@@ -135,7 +142,7 @@
       if (!$this->xml_exists($uri)) {
         die("Something went wrong, be sure you are online and that veganistan.se is up");
       }
-        $xml = simplexml_load_file($uri);
+      $xml = simplexml_load_file($uri);
       if (is_object($xml)) {
         return $xml;
       } else {

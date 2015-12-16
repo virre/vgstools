@@ -19,6 +19,9 @@
 
   Class Veganistan {
     
+
+    public $townArrays = array("stockholm"); // For some reason new did not work here.
+
     // All Stokholm post towns except thoose in Norrtälje and Nykvarn because thoose would not
     // be included in thinking of Stockholm. Just add them to the array if you disagree..
     // Because this information cost places to get from most places
@@ -26,7 +29,7 @@
     public $stockholm_towns = array(
       'Adelsö','Arlandastad','Bagarmossen', 'Bandhagen', 'Brandbergen', 'Bro', 'Bromma',
       'Brottby', 'Dalarö', 'Danderyd', 'Djurhamn', 'Djursholm', 'Drottningholm', 'Edsbro',
-      'Ekerö', 'Enebyberg', 'Enhörna', 'Enskede', 'Enskede_Gård', 'Enskededalen', 'Farsta',
+      'Ekerö', 'Enebyberg', 'Enhörna', 'Enskede', 'Enskede Gård', 'Enskededalen', 'Farsta',
       'Färentuna', 'Furusund', 'Grinda', 'Gränö', 'Grödinge', 'Gustavsberg', 'Gålö', 'Gällnöby',
       'Handen', 'Haninge', 'Harö', 'Husarö', 'Hårsfjärden', 'Hägersten', 'Hässelby', 'Hölö',
       'Ingarö', 'Ingmarsö', 'Järfälla', 'Järna', 'Johanneshov', 'Jordbro', 'Kista',
@@ -90,6 +93,34 @@
       }
       return $outputstring;
     }
+
+    /**
+     * Town exists in array. 
+     *
+     * @return bool. 
+     *  Returns true if we have an array of towns for this town, False otherwise. 
+     **/ 
+    protected function existsTownArray() {
+      if (in_array(strtolower($this->town), $this->townArrays)) {
+        return TRUE;
+      }
+      return FALSE;
+    }
+
+    /**
+     * Returns the array of post-towns for the general town you search for.
+     *
+     * @return mixed.
+     *  Returns the town array if exists, otherwise returns FALSE. 
+     **/
+    protected function getTownArray() {
+      if (in_array(strtolower($this->town), $this->townArrays)) {
+          $array_name = strtolower($this->town) . "_towns";
+          return $this->$array_name;
+      }
+      return FALSE;
+    }
+
   }
 
 ?>
