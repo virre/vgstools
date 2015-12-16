@@ -31,18 +31,61 @@
      *  Returns simplexml objects for either all post towns in area or just the strict search ones.
      **/
     public function getNewsXML($strict = FALSE) {
+
+      // If we want all places in a logical city area and not town area. 
       if (!$strict) {
         $rawxml = $this->getXML();
         if (!$rawxml) {
           die("Something went wrong, please make sure you are connected to the Internet");
         }
+
+        // This only sorts for Stockholm right now. 
+        // @TODO: build more logical arrays of town and make a selection
+        // process based on $this->town for this. 
         return $this->sortOutObjects($rawxml, $this->stockholm_towns);
       }
+
+      // Lets be strict. 
       elseif ($strict) {
-        $rawxml = $this->getXML($this->town);
-        return $rawxml;
+
+        // Check if there is a strict town XML. 
+        if ($this->isTownXML()) {
+
+          // if there is make sure to load it. 
+          $rawxml = $this->getXML($this->town);
+        } 
+
+        // But there is none. 
+        elseif (!$this->isTownXML()) {
+
+          // So we have to load all. 
+          $rawxml = $this->getXML();
+          if (!$rawxml) {
+            die("Something went wrong, please make sure you are connected to the Internet");
+          }
+
+          // And just make the sorted out object array just the strict town. 
+          return $this->sortOutObjects($rawxml, array($this->town));
+        }
       }
 
+    }
+
+    /**
+     * Check if XML file name exists for specific town. 
+     *
+     * @return bool.
+     *  True if exists, False if not.
+     **/
+    private function isTownXML() {
+      if (empty($this->town)) {
+        die("No town have been set");
+      }
+      $uri = "https://www.veganistan.se/$this->town.xml";
+      if ($this->xml_exists($uri)) {
+        return TRUE; 
+      }
+      return FALSE;
     }
 
     /**
@@ -154,8 +197,4 @@
       return FALSE;
     }
   }
-
-
-
-
 ?>

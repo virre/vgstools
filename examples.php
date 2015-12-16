@@ -20,6 +20,30 @@
 
   require_once("class/news.php");
   $news = new News();
+
+  // Lets try a Strict search for a town that have no local XML. 
+  $news->town = "Solna";
+  $all_town_places = $news->getNewsXML(TRUE);
+  foreach ($all_town_places as $place) {
+    print "Title: $place->title\n";
+    print "Adress: $place->adress\n";
+    print "Link: $place->link\n";
+    print "Description: $place->description";
+    print " -----\n";
+  }
+
+  // Strict search for Stockholm that do have a local xml. 
+  $news->town = "Stockholm";
+  $all_town_places = $news->getNewsXML(TRUE);
+  foreach ($all_town_places as $place) {
+    print "Title: $place->title\n";
+    print "Adress: $place->adress\n";
+    print "Link: $place->link\n";
+    print "Description: $place->description";
+    print " -----\n";
+  }
+
+  // None-strict search for Stockholm so we will use the array of posttowns in Stockholm. 
   $news->town = "Stockholm";
   $all_town_places = $news->getNewsXML();
   foreach ($all_town_places as $place) {
