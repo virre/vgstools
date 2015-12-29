@@ -1,0 +1,243 @@
+\hypertarget{class_search}{}\section{Search Class Reference}
+\label{class_search}\index{Search@{Search}}
+
+
+This is the class that holds the search functions.  
+
+
+Inheritance diagram for Search\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_search}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_search_a80725b6a32dfc685558764d47002d9c0}{\+\_\+search} ()
+\begin{DoxyCompactList}\small\item\em Do the acctual search based on if the strict property is T\+R\+U\+E O\+R F\+A\+L\+S\+E. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_search_ad5a555c9913e06e21914adb4d9fc36d6}{\$strict} = F\+A\+L\+S\+E
+\begin{DoxyCompactList}\small\item\em Defines if search should be strict or not. \end{DoxyCompactList}\item 
+\hyperlink{class_search_aab54895afb81d800b1aa7b5ed1e316d2}{\$town} = \char`\"{}\char`\"{}
+\begin{DoxyCompactList}\small\item\em The town to work with. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_search_adbc71d7a9ff28a661af822ca70dfeefa}{\$search\+\_\+uri} = \char`\"{}http\+://www.\+veganistan.\+se/?field\+\_\+adress\+\_\+locality=\char`\"{}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_search}{Search} U\+R\+I. \end{DoxyCompactList}\item 
+\hyperlink{class_search_a0bdf2816de59f8db308bc03285152358}{\$search\+Town} = \char`\"{}\char`\"{}
+\begin{DoxyCompactList}\small\item\em The current town being searched when generous search is used. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_search_a6469a0900a719795f117999646e78670}{exact\+Search} ()
+\begin{DoxyCompactList}\small\item\em Run an search for jsut the current town. \end{DoxyCompactList}\item 
+\hyperlink{class_search_ac7ab4b286f468dbc67184e3d8e2ec086}{generous\+Search} ()
+\begin{DoxyCompactList}\small\item\em Make an generous search by going through all towns in town array and querying them. \end{DoxyCompactList}\item 
+\hyperlink{class_search_aab0de7f1b256ebfc720a5c9a26c7a5e4}{make\+Query} ()
+\begin{DoxyCompactList}\small\item\em Make the acctual query to the homepage. \end{DoxyCompactList}\item 
+\hyperlink{class_search_ac74e4ae4005b43140ce27fa3be53803a}{get\+Links} ()
+\begin{DoxyCompactList}\small\item\em Get all links for a search. \end{DoxyCompactList}\item 
+\hyperlink{class_search_a0b07d40d538cc7c3f49e2906da900759}{get\+Links\+From\+Page} (\$content)
+\begin{DoxyCompactList}\small\item\em Fetch the acctual links to resturants from a string (mostly the content result of a search). \end{DoxyCompactList}\item 
+\hyperlink{class_search_a0ae3fdf6e8c01b665dbbfd3cb5afd82e}{fetch\+Links\+From\+Page} (\$uri)
+\begin{DoxyCompactList}\small\item\em Fetch the content of a page and then send it to get\+Links\+From\+Page method to extrapolate links. \end{DoxyCompactList}\item 
+\hyperlink{class_search_ada895dffcd96b9471758c63f17363df1}{is\+Multi\+Page} (\$content)
+\begin{DoxyCompactList}\small\item\em Look at a string and see if it is multipage html-\/page by looking for pager class. \end{DoxyCompactList}\item 
+\hyperlink{class_search_acb6f51d3e3311922bec40d096b0bac99}{amount\+Pages} (\$content)
+\begin{DoxyCompactList}\small\item\em Fetch the content and count if it is multipage by looking for the last number in the description of page length. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the class that holds the search functions. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_search_a80725b6a32dfc685558764d47002d9c0}{}\index{Search@{Search}!\+\_\+search@{\+\_\+search}}
+\index{\+\_\+search@{\+\_\+search}!Search@{Search}}
+\subsubsection[{\+\_\+search}]{\setlength{\rightskip}{0pt plus 5cm}Search\+::\+\_\+search (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_search_a80725b6a32dfc685558764d47002d9c0}
+
+
+Do the acctual search based on if the strict property is T\+R\+U\+E O\+R F\+A\+L\+S\+E. 
+
+\begin{DoxyReturn}{Returns}
+Array Returns an array with the result. 
+\end{DoxyReturn}
+\hypertarget{class_search_acb6f51d3e3311922bec40d096b0bac99}{}\index{Search@{Search}!amount\+Pages@{amount\+Pages}}
+\index{amount\+Pages@{amount\+Pages}!Search@{Search}}
+\subsubsection[{amount\+Pages}]{\setlength{\rightskip}{0pt plus 5cm}Search\+::amount\+Pages (
+\begin{DoxyParamCaption}
+\item[{}]{\$content}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_search_acb6f51d3e3311922bec40d096b0bac99}
+
+
+Fetch the content and count if it is multipage by looking for the last number in the description of page length. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$content} & String Contains the H\+T\+M\+L code of an U\+R\+I to check how many pages it is.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Integer Number of pages in pagination. 
+\end{DoxyReturn}
+\hypertarget{class_search_a6469a0900a719795f117999646e78670}{}\index{Search@{Search}!exact\+Search@{exact\+Search}}
+\index{exact\+Search@{exact\+Search}!Search@{Search}}
+\subsubsection[{exact\+Search}]{\setlength{\rightskip}{0pt plus 5cm}Search\+::exact\+Search (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_search_a6469a0900a719795f117999646e78670}
+
+
+Run an search for jsut the current town. 
+
+\begin{DoxyReturn}{Returns}
+Array containing the result of search. 
+\end{DoxyReturn}
+\hypertarget{class_search_a0ae3fdf6e8c01b665dbbfd3cb5afd82e}{}\index{Search@{Search}!fetch\+Links\+From\+Page@{fetch\+Links\+From\+Page}}
+\index{fetch\+Links\+From\+Page@{fetch\+Links\+From\+Page}!Search@{Search}}
+\subsubsection[{fetch\+Links\+From\+Page}]{\setlength{\rightskip}{0pt plus 5cm}Search\+::fetch\+Links\+From\+Page (
+\begin{DoxyParamCaption}
+\item[{}]{\$uri}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_search_a0ae3fdf6e8c01b665dbbfd3cb5afd82e}
+
+
+Fetch the content of a page and then send it to get\+Links\+From\+Page method to extrapolate links. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$uri} & String The U\+R\+I string to load the content off. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array containing the links found on the \$uri page or F\+A\+L\+S\+E if none is found or anything goes wrong. 
+\end{DoxyReturn}
+\hypertarget{class_search_ac7ab4b286f468dbc67184e3d8e2ec086}{}\index{Search@{Search}!generous\+Search@{generous\+Search}}
+\index{generous\+Search@{generous\+Search}!Search@{Search}}
+\subsubsection[{generous\+Search}]{\setlength{\rightskip}{0pt plus 5cm}Search\+::generous\+Search (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_search_ac7ab4b286f468dbc67184e3d8e2ec086}
+
+
+Make an generous search by going through all towns in town array and querying them. 
+
+\begin{DoxyReturn}{Returns}
+Array with data found in search or F\+A\+L\+S\+E if nothing is found. 
+\end{DoxyReturn}
+\hypertarget{class_search_ac74e4ae4005b43140ce27fa3be53803a}{}\index{Search@{Search}!get\+Links@{get\+Links}}
+\index{get\+Links@{get\+Links}!Search@{Search}}
+\subsubsection[{get\+Links}]{\setlength{\rightskip}{0pt plus 5cm}Search\+::get\+Links (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_search_ac74e4ae4005b43140ce27fa3be53803a}
+
+
+Get all links for a search. 
+
+\begin{DoxyReturn}{Returns}
+Returns an spl\+Fixed\+Array of all resturant urls on multiple pages if the search resulted in an multipage answer or an array of urls if not multipage and F\+A\+L\+S\+E on error. 
+\end{DoxyReturn}
+\hypertarget{class_search_a0b07d40d538cc7c3f49e2906da900759}{}\index{Search@{Search}!get\+Links\+From\+Page@{get\+Links\+From\+Page}}
+\index{get\+Links\+From\+Page@{get\+Links\+From\+Page}!Search@{Search}}
+\subsubsection[{get\+Links\+From\+Page}]{\setlength{\rightskip}{0pt plus 5cm}Search\+::get\+Links\+From\+Page (
+\begin{DoxyParamCaption}
+\item[{}]{\$content}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_search_a0b07d40d538cc7c3f49e2906da900759}
+
+
+Fetch the acctual links to resturants from a string (mostly the content result of a search). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$content} & String that contains the H\+T\+M\+L result of a search. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Either an array of links to resturants or F\+A\+L\+S\+E if none is found or something goes wrong. 
+\end{DoxyReturn}
+\hypertarget{class_search_ada895dffcd96b9471758c63f17363df1}{}\index{Search@{Search}!is\+Multi\+Page@{is\+Multi\+Page}}
+\index{is\+Multi\+Page@{is\+Multi\+Page}!Search@{Search}}
+\subsubsection[{is\+Multi\+Page}]{\setlength{\rightskip}{0pt plus 5cm}Search\+::is\+Multi\+Page (
+\begin{DoxyParamCaption}
+\item[{}]{\$content}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_search_ada895dffcd96b9471758c63f17363df1}
+
+
+Look at a string and see if it is multipage html-\/page by looking for pager class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$content} & String Contains the H\+T\+M\+L code of an U\+R\+I to check if it is a multipage reuslt.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Bool True if it is multipage otherwise F\+A\+L\+S\+E. 
+\end{DoxyReturn}
+\hypertarget{class_search_aab0de7f1b256ebfc720a5c9a26c7a5e4}{}\index{Search@{Search}!make\+Query@{make\+Query}}
+\index{make\+Query@{make\+Query}!Search@{Search}}
+\subsubsection[{make\+Query}]{\setlength{\rightskip}{0pt plus 5cm}Search\+::make\+Query (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_search_aab0de7f1b256ebfc720a5c9a26c7a5e4}
+
+
+Make the acctual query to the homepage. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]\+: Make sure to retry untill not 500 on webbrequests as load errors happens.\end{DoxyRefDesc}
+
+
+\begin{DoxyReturn}{Returns}
+spl\+Fixed\+Array for each place found containg an Spl\+Fixed\+Array of three rows with Name, address and description as there content or bool F\+A\+L\+S\+E if something fails. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_search_adbc71d7a9ff28a661af822ca70dfeefa}{}\index{Search@{Search}!\$search\+\_\+uri@{\$search\+\_\+uri}}
+\index{\$search\+\_\+uri@{\$search\+\_\+uri}!Search@{Search}}
+\subsubsection[{\$search\+\_\+uri}]{\setlength{\rightskip}{0pt plus 5cm}Search\+::\$search\+\_\+uri = \char`\"{}http\+://www.\+veganistan.\+se/?field\+\_\+adress\+\_\+locality=\char`\"{}\hspace{0.3cm}{\ttfamily [protected]}}\label{class_search_adbc71d7a9ff28a661af822ca70dfeefa}
+
+
+\hyperlink{class_search}{Search} U\+R\+I. 
+
+\hypertarget{class_search_a0bdf2816de59f8db308bc03285152358}{}\index{Search@{Search}!\$search\+Town@{\$search\+Town}}
+\index{\$search\+Town@{\$search\+Town}!Search@{Search}}
+\subsubsection[{\$search\+Town}]{\setlength{\rightskip}{0pt plus 5cm}Search\+::\$search\+Town = \char`\"{}\char`\"{}\hspace{0.3cm}{\ttfamily [protected]}}\label{class_search_a0bdf2816de59f8db308bc03285152358}
+
+
+The current town being searched when generous search is used. 
+
+\hypertarget{class_search_ad5a555c9913e06e21914adb4d9fc36d6}{}\index{Search@{Search}!\$strict@{\$strict}}
+\index{\$strict@{\$strict}!Search@{Search}}
+\subsubsection[{\$strict}]{\setlength{\rightskip}{0pt plus 5cm}Search\+::\$strict = F\+A\+L\+S\+E}\label{class_search_ad5a555c9913e06e21914adb4d9fc36d6}
+
+
+Defines if search should be strict or not. 
+
+\hypertarget{class_search_aab54895afb81d800b1aa7b5ed1e316d2}{}\index{Search@{Search}!\$town@{\$town}}
+\index{\$town@{\$town}!Search@{Search}}
+\subsubsection[{\$town}]{\setlength{\rightskip}{0pt plus 5cm}Search\+::\$town = \char`\"{}\char`\"{}}\label{class_search_aab54895afb81d800b1aa7b5ed1e316d2}
+
+
+The town to work with. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+class/\hyperlink{search_8php}{search.\+php}\end{DoxyCompactItemize}

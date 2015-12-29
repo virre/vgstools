@@ -18,7 +18,25 @@
 
   // Example file of how you can use the avalible tools
 
-  require_once("class/news.php");
+  require_once("class/search.php");
+
+  // Create a search object.
+  $search = new Search();
+
+  // Set a town to search. 
+  $search->town = "Stockholm";
+
+  // Make a generous search and show the amount of restuants. 
+  print "Amount of results with with generous search for $search->town " . count($search->_search());
+
+  // Set to strict search
+  $search->strict = TRUE;
+
+  // Make a strict search and show the amount of results. 
+  print "Amount of results with with strict search for $search->town " . count($search->_search());
+
+
+  // Create a news Object
   $news = new News();
 
   // Lets try a Strict search for a town that have no local XML. 

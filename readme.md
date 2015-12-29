@@ -4,11 +4,16 @@ VGS Tools
   Introduction 
   ---
    Veganistan is an excellent resource for Vegans in Stockholm and to some extent the rest of Sweden. However the search function is weak as it is based on the idea that post-towns are the local seperator which is not a well working idea as just Stockholm municipiality have a very high load of them. This in combination with my preference for CLI tools made me start writeing this tool libary. I am now realesing the first version which is an alpha and only contains the possiblity to fetch new data from the 
-   provided xml files. This should not create to high a load on the server when done but still show a start of how to work aroudn the post-town/postal-code problems. There is a lot of things still todo. 
+   provided xml files. This should not create to high a load on the server when done but still show a start of how to work around the post-town/postal-code problems. 
 
  Install 
  ---
    To use this toolset you will need to include the relevant class into your own code. At this town the relevant part is news.php as it contain the working code. For an example of how you can do this examples.php is provided. 
+
+ Documentation
+ ---
+   This project is using Doxygen to create documentation. The content created by Doxygen is found in the docs subfolders for html and latex and configuration is in vgs_tools.cfg. Please note that epstopdf was not installed at the development computer so there
+   might be issues with the current latex files. 
 
  Restrictions 
  ---

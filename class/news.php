@@ -15,16 +15,28 @@
 
     You should have received a copy of the GNU General Public License
     along with vgstools.  If not, see <http://www.gnu.org/licenses/>.*/
+
+  /**
+   * @file news.php
+   * @brief File containing the news class for vgstools.
+   * @author Virre Annergård <virre.annergard@gmail.com>
+   */
+
+  // Load the main class to inherit from.
   require_once("veganistan.php");
 
+   /**
+    * @class News.
+    * @brief This is the class that holds the news functions.
+    **/
   class News extends Veganistan {
 
-    public $town = "";
+    public $town = ""; //!< Town to find news for. 
 
     /**
-     * Fetch the News XML feed. 
+     * \brief Fetch the News XML feed. 
      *
-     * @param bool $stric.
+     * @param bool $strict.
      *  Get strict from town if True otherwise look for posttown arrays for general area. 
      *
      * @return Object.
@@ -79,7 +91,7 @@
     }
 
     /**
-     * Check if XML file name exists for specific town. 
+     * \brief Check if XML file name exists for specific town. 
      *
      * @return bool.
      *  True if exists, False if not.
@@ -96,7 +108,7 @@
     }
 
     /**
-     * Check so file is xml and exists.
+     * \brief Check so file is xml and exists.
      *
      * @param string $path.
      *  The path to check.
@@ -118,11 +130,8 @@
     }
 
     /**
-     * Get the XML Value either for all or just
-     * a specific posttown.
-     *
-     * @todo: 
-     *   Handle small town strict when file don't exist.
+     * \brief Get the XML Value either for all or just
+     *        a specific posttown.
      *
      * @param string $value.
      *  If set contains the town to check.
@@ -151,7 +160,7 @@
     }
 
     /**
-     * Sort out objects that are in a posttown in the town area.
+     * \brief Sort out objects that are in a posttown in the town area.
      *
      * @param Objct $xmlfile.
      *  The raw simplexml feed from xml file.
@@ -183,7 +192,7 @@
     }
 
     /**
-     * Function to look at link and match to post-town ,array used for non-strict search.
+     * \brief Function to look at link and match to post-town ,array used for non-strict search.
      *
      * @param string $uri .
      *  The uri to get town from.

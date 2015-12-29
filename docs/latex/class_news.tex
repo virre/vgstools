@@ -1,0 +1,169 @@
+\hypertarget{class_news}{}\section{News Class Reference}
+\label{class_news}\index{News@{News}}
+
+
+This is the class that holds the news functions.  
+
+
+Inheritance diagram for News\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_news}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_news_ae09b063136b3d937ff18a3fbf59a1110}{get\+News\+X\+M\+L} (\$strict=F\+A\+L\+S\+E)
+\begin{DoxyCompactList}\small\item\em Fetch the \hyperlink{class_news}{News} X\+M\+L feed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_news_a7edd0e2bb0d22b388b300fbcfb1bf424}{\$town} = \char`\"{}\char`\"{}
+\begin{DoxyCompactList}\small\item\em Town to find news for. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_news_a1b0fb404a16f7b85f85b67eb05238b69}{is\+Town\+X\+M\+L} ()
+\begin{DoxyCompactList}\small\item\em Check if X\+M\+L file name exists for specific town. \end{DoxyCompactList}\item 
+\hyperlink{class_news_ad6eee22d2271aa0873387099a6a4c4c8}{xml\+\_\+exists} (\$path)
+\begin{DoxyCompactList}\small\item\em Check so file is xml and exists. \end{DoxyCompactList}\item 
+\hyperlink{class_news_aa9f1517421b0c0ecaeb992a00c3c37a8}{get\+X\+M\+L} (\$value=F\+A\+L\+S\+E)
+\begin{DoxyCompactList}\small\item\em Get the X\+M\+L Value either for all or just a specific posttown. \end{DoxyCompactList}\item 
+\hyperlink{class_news_a6b9d6856e5a51474160b2869ee690902}{sort\+Out\+Objects} (\$xmlfile, \$town\+\_\+array)
+\begin{DoxyCompactList}\small\item\em Sort out objects that are in a posttown in the town area. \end{DoxyCompactList}\item 
+\hyperlink{class_news_a002eef91ca7d8590faf45d61b84539c0}{is\+Link\+Town} (\$uri, \$towns)
+\begin{DoxyCompactList}\small\item\em Function to look at link and match to post-\/town ,array used for non-\/strict search. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the class that holds the news functions. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_news_ae09b063136b3d937ff18a3fbf59a1110}{}\index{News@{News}!get\+News\+X\+M\+L@{get\+News\+X\+M\+L}}
+\index{get\+News\+X\+M\+L@{get\+News\+X\+M\+L}!News@{News}}
+\subsubsection[{get\+News\+X\+M\+L}]{\setlength{\rightskip}{0pt plus 5cm}News\+::get\+News\+X\+M\+L (
+\begin{DoxyParamCaption}
+\item[{}]{\$strict = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)}\label{class_news_ae09b063136b3d937ff18a3fbf59a1110}
+
+
+Fetch the \hyperlink{class_news}{News} X\+M\+L feed. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+bool & {\em \$strict,.} & Get strict from town if True otherwise look for posttown arrays for general area.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Object. Returns simplexml objects for either all post towns in area or just the strict search ones. 
+\end{DoxyReturn}
+\hypertarget{class_news_aa9f1517421b0c0ecaeb992a00c3c37a8}{}\index{News@{News}!get\+X\+M\+L@{get\+X\+M\+L}}
+\index{get\+X\+M\+L@{get\+X\+M\+L}!News@{News}}
+\subsubsection[{get\+X\+M\+L}]{\setlength{\rightskip}{0pt plus 5cm}News\+::get\+X\+M\+L (
+\begin{DoxyParamCaption}
+\item[{}]{\$value = {\ttfamily FALSE}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_news_aa9f1517421b0c0ecaeb992a00c3c37a8}
+
+
+Get the X\+M\+L Value either for all or just a specific posttown. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$value,.} & If set contains the town to check.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed \$xml. Contains the Simple\+X\+M\+L object for a town or false if somethign went wrong and was not handled. 
+\end{DoxyReturn}
+\hypertarget{class_news_a002eef91ca7d8590faf45d61b84539c0}{}\index{News@{News}!is\+Link\+Town@{is\+Link\+Town}}
+\index{is\+Link\+Town@{is\+Link\+Town}!News@{News}}
+\subsubsection[{is\+Link\+Town}]{\setlength{\rightskip}{0pt plus 5cm}News\+::is\+Link\+Town (
+\begin{DoxyParamCaption}
+\item[{}]{\$uri, }
+\item[{}]{\$towns}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_news_a002eef91ca7d8590faf45d61b84539c0}
+
+
+Function to look at link and match to post-\/town ,array used for non-\/strict search. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$uri} & . The uri to get town from. \\
+\hline
+array & {\em \$towns,.} & The town array to compare with.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool. Return True if one of the post-\/towns is the town part of the link otherwise fasle. 
+\end{DoxyReturn}
+\hypertarget{class_news_a1b0fb404a16f7b85f85b67eb05238b69}{}\index{News@{News}!is\+Town\+X\+M\+L@{is\+Town\+X\+M\+L}}
+\index{is\+Town\+X\+M\+L@{is\+Town\+X\+M\+L}!News@{News}}
+\subsubsection[{is\+Town\+X\+M\+L}]{\setlength{\rightskip}{0pt plus 5cm}News\+::is\+Town\+X\+M\+L (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_news_a1b0fb404a16f7b85f85b67eb05238b69}
+
+
+Check if X\+M\+L file name exists for specific town. 
+
+\begin{DoxyReturn}{Returns}
+bool. True if exists, False if not. 
+\end{DoxyReturn}
+\hypertarget{class_news_a6b9d6856e5a51474160b2869ee690902}{}\index{News@{News}!sort\+Out\+Objects@{sort\+Out\+Objects}}
+\index{sort\+Out\+Objects@{sort\+Out\+Objects}!News@{News}}
+\subsubsection[{sort\+Out\+Objects}]{\setlength{\rightskip}{0pt plus 5cm}News\+::sort\+Out\+Objects (
+\begin{DoxyParamCaption}
+\item[{}]{\$xmlfile, }
+\item[{}]{\$town\+\_\+array}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_news_a6b9d6856e5a51474160b2869ee690902}
+
+
+Sort out objects that are in a posttown in the town area. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+Objct & {\em \$xmlfile,.} & The raw simplexml feed from xml file. \\
+\hline
+array & {\em \$town\+\_\+array,.} & The acctuall array of towns to compare with.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array \$output. Array containing objects of place data in pure text. 
+\end{DoxyReturn}
+\hypertarget{class_news_ad6eee22d2271aa0873387099a6a4c4c8}{}\index{News@{News}!xml\+\_\+exists@{xml\+\_\+exists}}
+\index{xml\+\_\+exists@{xml\+\_\+exists}!News@{News}}
+\subsubsection[{xml\+\_\+exists}]{\setlength{\rightskip}{0pt plus 5cm}News\+::xml\+\_\+exists (
+\begin{DoxyParamCaption}
+\item[{}]{\$path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\label{class_news_ad6eee22d2271aa0873387099a6a4c4c8}
+
+
+Check so file is xml and exists. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$path,.} & The path to check.\\
+\hline
+\end{DoxyParams}
+\$return bool. True if file exists and is X\+M\+L otherwise F\+A\+L\+S\+E. 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_news_a7edd0e2bb0d22b388b300fbcfb1bf424}{}\index{News@{News}!\$town@{\$town}}
+\index{\$town@{\$town}!News@{News}}
+\subsubsection[{\$town}]{\setlength{\rightskip}{0pt plus 5cm}News\+::\$town = \char`\"{}\char`\"{}}\label{class_news_a7edd0e2bb0d22b388b300fbcfb1bf424}
+
+
+Town to find news for. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+class/\hyperlink{news_8php}{news.\+php}\end{DoxyCompactItemize}
