@@ -1,0 +1,5 @@
+Changelog: 
+
+2016-11-26:
+	* Fixed an issue in the search results return array. 
+	* Added District search support for Stockholm inner-city zipcodes. 
