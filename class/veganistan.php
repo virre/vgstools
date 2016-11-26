@@ -59,6 +59,52 @@
       'Årsta Havsbad', 'Älvsjö', 'Älta', 'Ösmo', 'Österhaninge', 'Österskär', 
     ); //!< Array containg all Post-towns in a wide definition of Stockholm. 
 
+
+    public $stockholm_districts = array(
+      'Gamla Stan' => array('111'),
+      'Norrmalm' => array('111'),
+      'Kungsholmen' => array('112'),
+      'Vasastaden' => array('113'),
+      'Östermalm' => array('114', '115'),
+      'Södermalm' => array('116', '117', '118'),
+    ); //!< Array containing innercity district and zip-codes. Some of these includes outside areas. 
+
+    /**
+     * \brief Check if Zip is in District.
+     *
+     * @param string $zip.
+     *  The zip to check.
+     *
+     * @param string $district.
+     *  The district to look for zip in.
+     *
+     * @return boolean.
+     *  Returns true if district is correct.
+     **/
+    public function isZipInDistrict($zip, $district) {
+      $current_district = $this->stockholm_districts[$district];
+      if (array_search($zip, $current_district)) {
+        return TRUE;
+      }
+      return FALSE;
+    }
+
+    /**
+     * \brief Gets the zip-code from adress.
+     *
+     * @param string $string.
+     *  The address string.
+     *
+     * @return string $zip_start.
+     *  Return start of zip-code.
+     **/
+    public function getZipStart($string) {
+      $splitAddress = preg_split("/\s\s+/", $string);
+      $zip_code = $splitAddress[1];
+      $zip_start = substr($zip_code, 0, 3);
+      return $zip_start;
+    }
+
     /**
      * \brief Gets the address data from the longer description and returns it as pure text. 
      *

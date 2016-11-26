@@ -62,6 +62,36 @@
 		}
 
 		/**
+		 * \brief Search for places in a district.
+		 *
+		 * @param string $district.
+		 *   Array key district name for district to search for.
+		 *
+		 * @return splFixedArray containing the places in district. 
+		 **/
+		public function districtSearch($district) {
+			$town_results = $this->exactSearch();
+			$count = count($town_results);
+			$i = 0;
+			$found = array();
+			while ($i < $count) {
+				$place = $town_results[$i];
+				$zip_start = $this->getZipStart($place[1]);
+				if ($this->isZipInDistrict($zip_start, $district)) {
+					$found[] = $i;
+				}
+				$i++;
+			}
+			$results = new splFixedArray(count($found));
+			$i = 0;
+			foreach($found as $place_id) {
+				$results[$i] = $town_results[$place_id];
+				$i++;
+			}
+			return $results;
+		}
+
+		/**
 		 * \brief Make an generous search by going through all towns in town array and querying them.
 		 *
 		 * @return Array with data found in search or FALSE if nothing is found.
@@ -100,13 +130,16 @@
 			if (!empty($this->getLinks())) {
 				$links = $this->getLinks();
 				$results = new splFixedArray($this->mixedCount($links));
-
+				$found = array();
 				// Content array will be 0 = Name, 1 = Adress 2 = Opening times 3 = Description.
 				$content = new splFixedArray(3);
 				$num = 0;
 				foreach ($links as $link) {
 					if (is_array($link)) {
 						foreach ($link as $page) {
+							if ($found[$page]) {
+								continue;
+							}
 							$uri = "http://www.veganistan.se" . $page;
 							$data = file_get_contents($uri);
 
@@ -116,20 +149,28 @@
 							$content[2] = $this->getDescriptionFromDescription($data);
 							$results[$num] = $content;
 							$num++;
+							unset($content);
+							$found[$page] = TRUE;
 						}
 					}
 					elseif (!is_array($link)) {
+						if ($found[$link]) {
+							continue;
+						}
 						$uri = "http://www.veganistan.se" . $link;
 						$data = file_get_contents($uri);
 
-						//TODO: Checl for error. 
+						//TODO: Check for error.
 						$content[0] = $this->getNameFromPage($data);
 						$content[1] = $this->getAddressFromDescription($data);
 						$content[2] = $this->getDescriptionFromDescription($data);
 						$results[$num] = $content;
+						unset($content);
+						$found[$page] = TRUE;
 						$num++;
 					}
 				}
+				$results->setSize(count($found)+1);
 				return $results;
 			} else {
 				$links = NULL;

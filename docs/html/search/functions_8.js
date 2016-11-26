@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['xml_5fexists',['xml_exists',['../class_news.html#ad6eee22d2271aa0873387099a6a4c4c8',1,'News']]]
+  ['sortoutobjects',['sortOutObjects',['../class_news.html#a6b9d6856e5a51474160b2869ee690902',1,'News']]]
 ];

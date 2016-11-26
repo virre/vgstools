@@ -25,6 +25,7 @@
 
   // Set a town to search. 
   $search->town = "Stockholm";
+  print "Amount of results with a district search for Södermalm: " . count($search->districtSearch('Södermalm')) . "\n";
 
   // Make a generous search and show the amount of restuants. 
   print "Amount of results with with generous search for $search->town " . count($search->_search());

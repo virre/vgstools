@@ -1,9 +1,9 @@
 var indexSectionsWithContent =
 {
-  0: "$_aefgimnstvx",
+  0: "$_adefgimnstvx",
   1: "nsv",
   2: "nsv",
-  3: "_aefgimsx",
+  3: "_adefgimsx",
   4: "$v",
   5: "t"
 };

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['makequery',['makeQuery',['../class_search.html#aab0de7f1b256ebfc720a5c9a26c7a5e4',1,'Search']]],
-  ['makewebpattern',['makeWebPattern',['../veganistan_8php.html#a7f0c7d546fe1fc26d7ba1e8b58bb7cde',1,'veganistan.php']]],
-  ['matchlinktotown',['matchLinkToTown',['../veganistan_8php.html#a036078d10f25b186e72c0a54943dc077',1,'veganistan.php']]],
-  ['mixedcount',['mixedCount',['../veganistan_8php.html#a3efb5bb55d51db5839c3e83b0f490c75',1,'veganistan.php']]]
+  ['islinktown',['isLinkTown',['../class_news.html#a002eef91ca7d8590faf45d61b84539c0',1,'News']]],
+  ['ismultipage',['isMultiPage',['../class_search.html#ada895dffcd96b9471758c63f17363df1',1,'Search']]],
+  ['istownxml',['isTownXML',['../class_news.html#a1b0fb404a16f7b85f85b67eb05238b69',1,'News']]],
+  ['iszipindistrict',['isZipInDistrict',['../veganistan_8php.html#a7a186816dd2b5975ec4a30160580dfe2',1,'veganistan.php']]]
 ];

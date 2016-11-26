@@ -8,6 +8,10 @@ File containing the search class for vgstools.
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{veganistan_8php_a7a186816dd2b5975ec4a30160580dfe2}{is\+Zip\+In\+District} (\$zip, \$district)
+\begin{DoxyCompactList}\small\item\em Check if Zip is in District. \end{DoxyCompactList}\item 
+\hyperlink{veganistan_8php_a26c5d831dbe4c547a37559dc76d68c8b}{get\+Zip\+Start} (\$string)
+\begin{DoxyCompactList}\small\item\em Gets the zip-\/code from adress. \end{DoxyCompactList}\item 
 \hyperlink{veganistan_8php_af1239b1ab4bb8b28bde609484b92de75}{get\+Address\+From\+Description} (\$string)
 \begin{DoxyCompactList}\small\item\em Gets the address data from the longer description and returns it as pure text. \end{DoxyCompactList}\item 
 \hyperlink{veganistan_8php_ab53c3963282815bfc5db50f03053c497}{get\+Description\+From\+Description} (\$string)
@@ -19,7 +23,7 @@ File containing the search class for vgstools.
 \hyperlink{veganistan_8php_a036078d10f25b186e72c0a54943dc077}{match\+Link\+To\+Town} (\$link, \$town)
 \begin{DoxyCompactList}\small\item\em Check if a link contains town (Could also be used) for other matching. \end{DoxyCompactList}\item 
 \hyperlink{veganistan_8php_a7f0c7d546fe1fc26d7ba1e8b58bb7cde}{make\+Web\+Pattern} (\$string)
-\begin{DoxyCompactList}\small\item\em Make string lovwercase and in otherway match the pages U\+R\+I structure. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Make string lovwercase and in otherway match the pages U\+RI structure. \end{DoxyCompactList}\item 
 \hyperlink{veganistan_8php_ab4235042caee848a173cb153da0f29be}{get\+Name\+From\+Page} (\$string)
 \begin{DoxyCompactList}\small\item\em Get the name of resturant by regexping for the page title id in html-\/string. \end{DoxyCompactList}\item 
 \hyperlink{veganistan_8php_a96e15e817a7a149db3e0b45ce0067e13}{get\+Opening\+Times\+From\+Page} (\$string)
@@ -30,11 +34,13 @@ File containing the search class for vgstools.
 \begin{DoxyCompactItemize}
 \item 
 Class \hyperlink{veganistan_8php_ad195a0ca83dc2cfc81667f8b7e2c2e8f}{Veganistan}
-\begin{DoxyCompactList}\small\item\em The general U\+R\+I to site. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The general U\+RI to site. \end{DoxyCompactList}\item 
 \hyperlink{veganistan_8php_a91710d77c3b1fe716933e6b2812ebb48}{\$town\+Arrays} = array(\char`\"{}stockholm\char`\"{})
 \begin{DoxyCompactList}\small\item\em Array contains name of town arrays. \end{DoxyCompactList}\item 
 \hyperlink{veganistan_8php_aa87fd4a07e43c737def4add38fe29880}{\$stockholm\+\_\+towns}
-\begin{DoxyCompactList}\small\item\em Array containg all Post-\/towns in a wide definition of Stockholm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Array containg all Post-\/towns in a wide definition of Stockholm. \end{DoxyCompactList}\item 
+\hyperlink{veganistan_8php_afeef2fa6638c4bffe83af73ec7b4c5d6}{\$stockholm\+\_\+districts}
+\begin{DoxyCompactList}\small\item\em Array containing innercity district and zip-\/codes. Some of these includes outside areas. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -46,13 +52,12 @@ Virre Annergård \href{mailto:virre.annergard@gmail.com}{\tt virre.\+annergard@g
 
 
 \subsection{Function Documentation}
-\hypertarget{veganistan_8php_ab9d8d11d7c212098c40df90c702d02e0}{}\index{veganistan.\+php@{veganistan.\+php}!exists\+Town\+Array@{exists\+Town\+Array}}
+\hypertarget{veganistan_8php_ab9d8d11d7c212098c40df90c702d02e0}{}\label{veganistan_8php_ab9d8d11d7c212098c40df90c702d02e0} 
+\index{veganistan.\+php@{veganistan.\+php}!exists\+Town\+Array@{exists\+Town\+Array}}
 \index{exists\+Town\+Array@{exists\+Town\+Array}!veganistan.\+php@{veganistan.\+php}}
-\subsubsection[{exists\+Town\+Array}]{\setlength{\rightskip}{0pt plus 5cm}exists\+Town\+Array (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}}\label{veganistan_8php_ab9d8d11d7c212098c40df90c702d02e0}
+\subsubsection{\texorpdfstring{exists\+Town\+Array()}{existsTownArray()}}
+{\footnotesize\ttfamily exists\+Town\+Array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
 
 
 Town exists in array. 
@@ -60,51 +65,48 @@ Town exists in array.
 \begin{DoxyReturn}{Returns}
 bool. Returns true if we have an array of towns for this town, False otherwise. 
 \end{DoxyReturn}
-\hypertarget{veganistan_8php_af1239b1ab4bb8b28bde609484b92de75}{}\index{veganistan.\+php@{veganistan.\+php}!get\+Address\+From\+Description@{get\+Address\+From\+Description}}
+\hypertarget{veganistan_8php_af1239b1ab4bb8b28bde609484b92de75}{}\label{veganistan_8php_af1239b1ab4bb8b28bde609484b92de75} 
+\index{veganistan.\+php@{veganistan.\+php}!get\+Address\+From\+Description@{get\+Address\+From\+Description}}
 \index{get\+Address\+From\+Description@{get\+Address\+From\+Description}!veganistan.\+php@{veganistan.\+php}}
-\subsubsection[{get\+Address\+From\+Description}]{\setlength{\rightskip}{0pt plus 5cm}get\+Address\+From\+Description (
-\begin{DoxyParamCaption}
-\item[{}]{\$string}
-\end{DoxyParamCaption}
-)}\label{veganistan_8php_af1239b1ab4bb8b28bde609484b92de75}
+\subsubsection{\texorpdfstring{get\+Address\+From\+Description()}{getAddressFromDescription()}}
+{\footnotesize\ttfamily get\+Address\+From\+Description (\begin{DoxyParamCaption}\item[{}]{\$string }\end{DoxyParamCaption})}
+
 
 
 Gets the address data from the longer description and returns it as pure text. 
 
 
 \begin{DoxyParams}[1]{Parameters}
-string & {\em \$string,.} & The H\+T\+M\+L string for object to look for address in.\\
+string & {\em \$string,.} & The H\+T\+ML string for object to look for address in.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 string \$string. Return pure text string of address. 
 \end{DoxyReturn}
-\hypertarget{veganistan_8php_ab53c3963282815bfc5db50f03053c497}{}\index{veganistan.\+php@{veganistan.\+php}!get\+Description\+From\+Description@{get\+Description\+From\+Description}}
+\hypertarget{veganistan_8php_ab53c3963282815bfc5db50f03053c497}{}\label{veganistan_8php_ab53c3963282815bfc5db50f03053c497} 
+\index{veganistan.\+php@{veganistan.\+php}!get\+Description\+From\+Description@{get\+Description\+From\+Description}}
 \index{get\+Description\+From\+Description@{get\+Description\+From\+Description}!veganistan.\+php@{veganistan.\+php}}
-\subsubsection[{get\+Description\+From\+Description}]{\setlength{\rightskip}{0pt plus 5cm}get\+Description\+From\+Description (
-\begin{DoxyParamCaption}
-\item[{}]{\$string}
-\end{DoxyParamCaption}
-)}\label{veganistan_8php_ab53c3963282815bfc5db50f03053c497}
+\subsubsection{\texorpdfstring{get\+Description\+From\+Description()}{getDescriptionFromDescription()}}
+{\footnotesize\ttfamily get\+Description\+From\+Description (\begin{DoxyParamCaption}\item[{}]{\$string }\end{DoxyParamCaption})}
+
 
 
 Gets the description data from the longer description and returns it as pure text. 
 
 
 \begin{DoxyParams}[1]{Parameters}
-string & {\em \$string,.} & The H\+T\+M\+L string for object to look for description in.\\
+string & {\em \$string,.} & The H\+T\+ML string for object to look for description in.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 string \$string. Return pure text string of description. 
 \end{DoxyReturn}
-\hypertarget{veganistan_8php_ab4235042caee848a173cb153da0f29be}{}\index{veganistan.\+php@{veganistan.\+php}!get\+Name\+From\+Page@{get\+Name\+From\+Page}}
+\hypertarget{veganistan_8php_ab4235042caee848a173cb153da0f29be}{}\label{veganistan_8php_ab4235042caee848a173cb153da0f29be} 
+\index{veganistan.\+php@{veganistan.\+php}!get\+Name\+From\+Page@{get\+Name\+From\+Page}}
 \index{get\+Name\+From\+Page@{get\+Name\+From\+Page}!veganistan.\+php@{veganistan.\+php}}
-\subsubsection[{get\+Name\+From\+Page}]{\setlength{\rightskip}{0pt plus 5cm}get\+Name\+From\+Page (
-\begin{DoxyParamCaption}
-\item[{}]{\$string}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}}\label{veganistan_8php_ab4235042caee848a173cb153da0f29be}
+\subsubsection{\texorpdfstring{get\+Name\+From\+Page()}{getNameFromPage()}}
+{\footnotesize\ttfamily get\+Name\+From\+Page (\begin{DoxyParamCaption}\item[{}]{\$string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
 
 
 Get the name of resturant by regexping for the page title id in html-\/string. 
@@ -117,13 +119,12 @@ Get the name of resturant by regexping for the page title id in html-\/string.
 \begin{DoxyReturn}{Returns}
 String of page title if found otherwise boolean False. 
 \end{DoxyReturn}
-\hypertarget{veganistan_8php_a96e15e817a7a149db3e0b45ce0067e13}{}\index{veganistan.\+php@{veganistan.\+php}!get\+Opening\+Times\+From\+Page@{get\+Opening\+Times\+From\+Page}}
+\hypertarget{veganistan_8php_a96e15e817a7a149db3e0b45ce0067e13}{}\label{veganistan_8php_a96e15e817a7a149db3e0b45ce0067e13} 
+\index{veganistan.\+php@{veganistan.\+php}!get\+Opening\+Times\+From\+Page@{get\+Opening\+Times\+From\+Page}}
 \index{get\+Opening\+Times\+From\+Page@{get\+Opening\+Times\+From\+Page}!veganistan.\+php@{veganistan.\+php}}
-\subsubsection[{get\+Opening\+Times\+From\+Page}]{\setlength{\rightskip}{0pt plus 5cm}get\+Opening\+Times\+From\+Page (
-\begin{DoxyParamCaption}
-\item[{}]{\$string}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}}\label{veganistan_8php_a96e15e817a7a149db3e0b45ce0067e13}
+\subsubsection{\texorpdfstring{get\+Opening\+Times\+From\+Page()}{getOpeningTimesFromPage()}}
+{\footnotesize\ttfamily get\+Opening\+Times\+From\+Page (\begin{DoxyParamCaption}\item[{}]{\$string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
 
 
 Get the opening times of resturant by regexping for the \char`\"{}oppettider-\/fritext\char`\"{} class in html-\/string. 
@@ -136,30 +137,66 @@ Get the opening times of resturant by regexping for the \char`\"{}oppettider-\/f
 \begin{DoxyReturn}{Returns}
 String of opening times if found otherwise boolean False. 
 \end{DoxyReturn}
-\hypertarget{veganistan_8php_a80deef1c368c57a83751d69eee0f9bec}{}\index{veganistan.\+php@{veganistan.\+php}!get\+Town\+Array@{get\+Town\+Array}}
+\hypertarget{veganistan_8php_a80deef1c368c57a83751d69eee0f9bec}{}\label{veganistan_8php_a80deef1c368c57a83751d69eee0f9bec} 
+\index{veganistan.\+php@{veganistan.\+php}!get\+Town\+Array@{get\+Town\+Array}}
 \index{get\+Town\+Array@{get\+Town\+Array}!veganistan.\+php@{veganistan.\+php}}
-\subsubsection[{get\+Town\+Array}]{\setlength{\rightskip}{0pt plus 5cm}get\+Town\+Array (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}}\label{veganistan_8php_a80deef1c368c57a83751d69eee0f9bec}
+\subsubsection{\texorpdfstring{get\+Town\+Array()}{getTownArray()}}
+{\footnotesize\ttfamily get\+Town\+Array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
 
 
 Returns the array of post-\/towns for the general town you search for. 
 
 \begin{DoxyReturn}{Returns}
-mixed. Returns the town array if exists, otherwise returns F\+A\+L\+S\+E. 
+mixed. Returns the town array if exists, otherwise returns F\+A\+L\+SE. 
 \end{DoxyReturn}
-\hypertarget{veganistan_8php_a7f0c7d546fe1fc26d7ba1e8b58bb7cde}{}\index{veganistan.\+php@{veganistan.\+php}!make\+Web\+Pattern@{make\+Web\+Pattern}}
+\hypertarget{veganistan_8php_a26c5d831dbe4c547a37559dc76d68c8b}{}\label{veganistan_8php_a26c5d831dbe4c547a37559dc76d68c8b} 
+\index{veganistan.\+php@{veganistan.\+php}!get\+Zip\+Start@{get\+Zip\+Start}}
+\index{get\+Zip\+Start@{get\+Zip\+Start}!veganistan.\+php@{veganistan.\+php}}
+\subsubsection{\texorpdfstring{get\+Zip\+Start()}{getZipStart()}}
+{\footnotesize\ttfamily get\+Zip\+Start (\begin{DoxyParamCaption}\item[{}]{\$string }\end{DoxyParamCaption})}
+
+
+
+Gets the zip-\/code from adress. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$string,.} & The address string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string \$zip\+\_\+start. Return start of zip-\/code. 
+\end{DoxyReturn}
+\hypertarget{veganistan_8php_a7a186816dd2b5975ec4a30160580dfe2}{}\label{veganistan_8php_a7a186816dd2b5975ec4a30160580dfe2} 
+\index{veganistan.\+php@{veganistan.\+php}!is\+Zip\+In\+District@{is\+Zip\+In\+District}}
+\index{is\+Zip\+In\+District@{is\+Zip\+In\+District}!veganistan.\+php@{veganistan.\+php}}
+\subsubsection{\texorpdfstring{is\+Zip\+In\+District()}{isZipInDistrict()}}
+{\footnotesize\ttfamily is\+Zip\+In\+District (\begin{DoxyParamCaption}\item[{}]{\$zip,  }\item[{}]{\$district }\end{DoxyParamCaption})}
+
+
+
+Check if Zip is in District. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$zip,.} & The zip to check.\\
+\hline
+string & {\em \$district,.} & The district to look for zip in.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean. Returns true if district is correct. 
+\end{DoxyReturn}
+\hypertarget{veganistan_8php_a7f0c7d546fe1fc26d7ba1e8b58bb7cde}{}\label{veganistan_8php_a7f0c7d546fe1fc26d7ba1e8b58bb7cde} 
+\index{veganistan.\+php@{veganistan.\+php}!make\+Web\+Pattern@{make\+Web\+Pattern}}
 \index{make\+Web\+Pattern@{make\+Web\+Pattern}!veganistan.\+php@{veganistan.\+php}}
-\subsubsection[{make\+Web\+Pattern}]{\setlength{\rightskip}{0pt plus 5cm}make\+Web\+Pattern (
-\begin{DoxyParamCaption}
-\item[{}]{\$string}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}}\label{veganistan_8php_a7f0c7d546fe1fc26d7ba1e8b58bb7cde}
+\subsubsection{\texorpdfstring{make\+Web\+Pattern()}{makeWebPattern()}}
+{\footnotesize\ttfamily make\+Web\+Pattern (\begin{DoxyParamCaption}\item[{}]{\$string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
-Make string lovwercase and in otherway match the pages U\+R\+I structure. 
+
+Make string lovwercase and in otherway match the pages U\+RI structure. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -169,14 +206,12 @@ Make string lovwercase and in otherway match the pages U\+R\+I structure.
 \begin{DoxyReturn}{Returns}
 String \$string that been lovercased and had local characthers removed. 
 \end{DoxyReturn}
-\hypertarget{veganistan_8php_a036078d10f25b186e72c0a54943dc077}{}\index{veganistan.\+php@{veganistan.\+php}!match\+Link\+To\+Town@{match\+Link\+To\+Town}}
+\hypertarget{veganistan_8php_a036078d10f25b186e72c0a54943dc077}{}\label{veganistan_8php_a036078d10f25b186e72c0a54943dc077} 
+\index{veganistan.\+php@{veganistan.\+php}!match\+Link\+To\+Town@{match\+Link\+To\+Town}}
 \index{match\+Link\+To\+Town@{match\+Link\+To\+Town}!veganistan.\+php@{veganistan.\+php}}
-\subsubsection[{match\+Link\+To\+Town}]{\setlength{\rightskip}{0pt plus 5cm}match\+Link\+To\+Town (
-\begin{DoxyParamCaption}
-\item[{}]{\$link, }
-\item[{}]{\$town}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}}\label{veganistan_8php_a036078d10f25b186e72c0a54943dc077}
+\subsubsection{\texorpdfstring{match\+Link\+To\+Town()}{matchLinkToTown()}}
+{\footnotesize\ttfamily match\+Link\+To\+Town (\begin{DoxyParamCaption}\item[{}]{\$link,  }\item[{}]{\$town }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
 
 
 Check if a link contains town (Could also be used) for other matching. 
@@ -189,15 +224,14 @@ Check if a link contains town (Could also be used) for other matching.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Bool Returns T\+R\+U\+E if matching otherwise F\+A\+L\+S\+E. 
+Bool Returns T\+R\+UE if matching otherwise F\+A\+L\+SE. 
 \end{DoxyReturn}
-\hypertarget{veganistan_8php_a3efb5bb55d51db5839c3e83b0f490c75}{}\index{veganistan.\+php@{veganistan.\+php}!mixed\+Count@{mixed\+Count}}
+\hypertarget{veganistan_8php_a3efb5bb55d51db5839c3e83b0f490c75}{}\label{veganistan_8php_a3efb5bb55d51db5839c3e83b0f490c75} 
+\index{veganistan.\+php@{veganistan.\+php}!mixed\+Count@{mixed\+Count}}
 \index{mixed\+Count@{mixed\+Count}!veganistan.\+php@{veganistan.\+php}}
-\subsubsection[{mixed\+Count}]{\setlength{\rightskip}{0pt plus 5cm}mixed\+Count (
-\begin{DoxyParamCaption}
-\item[{}]{\$arr}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}}\label{veganistan_8php_a3efb5bb55d51db5839c3e83b0f490c75}
+\subsubsection{\texorpdfstring{mixed\+Count()}{mixedCount()}}
+{\footnotesize\ttfamily mixed\+Count (\begin{DoxyParamCaption}\item[{}]{\$arr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
 
 
 Get the length of both arrays and arrays inside of objects. Usefull for when we use both spl\+Fixed\+Array and arrays inside another array. 
@@ -213,9 +247,33 @@ Integer Number of content.
 
 
 \subsection{Variable Documentation}
-\hypertarget{veganistan_8php_aa87fd4a07e43c737def4add38fe29880}{}\index{veganistan.\+php@{veganistan.\+php}!\$stockholm\+\_\+towns@{\$stockholm\+\_\+towns}}
+\hypertarget{veganistan_8php_afeef2fa6638c4bffe83af73ec7b4c5d6}{}\label{veganistan_8php_afeef2fa6638c4bffe83af73ec7b4c5d6} 
+\index{veganistan.\+php@{veganistan.\+php}!\$stockholm\+\_\+districts@{\$stockholm\+\_\+districts}}
+\index{\$stockholm\+\_\+districts@{\$stockholm\+\_\+districts}!veganistan.\+php@{veganistan.\+php}}
+\subsubsection{\texorpdfstring{\$stockholm\+\_\+districts}{$stockholm\_districts}}
+{\footnotesize\ttfamily \$stockholm\+\_\+districts}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= array(
+      \textcolor{stringliteral}{'Gamla Stan'} => array(\textcolor{stringliteral}{'111'}),
+      \textcolor{stringliteral}{'Norrmalm'} => array(\textcolor{stringliteral}{'111'}),
+      \textcolor{stringliteral}{'Kungsholmen'} => array(\textcolor{stringliteral}{'112'}),
+      \textcolor{stringliteral}{'Vasastaden'} => array(\textcolor{stringliteral}{'113'}),
+      \textcolor{stringliteral}{'Östermalm'} => array(\textcolor{stringliteral}{'114'}, \textcolor{stringliteral}{'115'}),
+      \textcolor{stringliteral}{'Södermalm'} => array(\textcolor{stringliteral}{'116'}, \textcolor{stringliteral}{'117'}, \textcolor{stringliteral}{'118'}),
+    )
+\end{DoxyCode}
+
+
+Array containing innercity district and zip-\/codes. Some of these includes outside areas. 
+
+\hypertarget{veganistan_8php_aa87fd4a07e43c737def4add38fe29880}{}\label{veganistan_8php_aa87fd4a07e43c737def4add38fe29880} 
+\index{veganistan.\+php@{veganistan.\+php}!\$stockholm\+\_\+towns@{\$stockholm\+\_\+towns}}
 \index{\$stockholm\+\_\+towns@{\$stockholm\+\_\+towns}!veganistan.\+php@{veganistan.\+php}}
-\subsubsection[{\$stockholm\+\_\+towns}]{\setlength{\rightskip}{0pt plus 5cm}\$stockholm\+\_\+towns}\label{veganistan_8php_aa87fd4a07e43c737def4add38fe29880}
+\subsubsection{\texorpdfstring{\$stockholm\+\_\+towns}{$stockholm\_towns}}
+{\footnotesize\ttfamily \$stockholm\+\_\+towns}
+
 {\bfseries Initial value\+:}
 \begin{DoxyCode}
 = array(
@@ -243,16 +301,22 @@ Integer Number of content.
 
 Array containg all Post-\/towns in a wide definition of Stockholm. 
 
-\hypertarget{veganistan_8php_a91710d77c3b1fe716933e6b2812ebb48}{}\index{veganistan.\+php@{veganistan.\+php}!\$town\+Arrays@{\$town\+Arrays}}
+\hypertarget{veganistan_8php_a91710d77c3b1fe716933e6b2812ebb48}{}\label{veganistan_8php_a91710d77c3b1fe716933e6b2812ebb48} 
+\index{veganistan.\+php@{veganistan.\+php}!\$town\+Arrays@{\$town\+Arrays}}
 \index{\$town\+Arrays@{\$town\+Arrays}!veganistan.\+php@{veganistan.\+php}}
-\subsubsection[{\$town\+Arrays}]{\setlength{\rightskip}{0pt plus 5cm}\$town\+Arrays = array(\char`\"{}stockholm\char`\"{})}\label{veganistan_8php_a91710d77c3b1fe716933e6b2812ebb48}
+\subsubsection{\texorpdfstring{\$town\+Arrays}{$townArrays}}
+{\footnotesize\ttfamily \$town\+Arrays = array(\char`\"{}stockholm\char`\"{})}
+
 
 
 Array contains name of town arrays. 
 
-\hypertarget{veganistan_8php_ad195a0ca83dc2cfc81667f8b7e2c2e8f}{}\index{veganistan.\+php@{veganistan.\+php}!Veganistan@{Veganistan}}
+\hypertarget{veganistan_8php_ad195a0ca83dc2cfc81667f8b7e2c2e8f}{}\label{veganistan_8php_ad195a0ca83dc2cfc81667f8b7e2c2e8f} 
+\index{veganistan.\+php@{veganistan.\+php}!Veganistan@{Veganistan}}
 \index{Veganistan@{Veganistan}!veganistan.\+php@{veganistan.\+php}}
-\subsubsection[{Veganistan}]{\setlength{\rightskip}{0pt plus 5cm}Class {\bf Veganistan}}\label{veganistan_8php_ad195a0ca83dc2cfc81667f8b7e2c2e8f}
+\subsubsection{\texorpdfstring{Veganistan}{Veganistan}}
+{\footnotesize\ttfamily Class \hyperlink{class_veganistan}{Veganistan}}
+
 {\bfseries Initial value\+:}
 \begin{DoxyCode}
 \{
@@ -262,5 +326,5 @@ Array contains name of town arrays.
 \end{DoxyCode}
 
 
-The general U\+R\+I to site. 
+The general U\+RI to site. 
 

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['xml_5fexists',['xml_exists',['../class_news.html#ad6eee22d2271aa0873387099a6a4c4c8',1,'News']]]
+  ['veganistan',['Veganistan',['../class_veganistan.html',1,'Veganistan'],['../veganistan_8php.html#ad195a0ca83dc2cfc81667f8b7e2c2e8f',1,'Veganistan():&#160;veganistan.php']]],
+  ['veganistan_2ephp',['veganistan.php',['../veganistan_8php.html',1,'']]]
 ];
