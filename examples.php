@@ -19,28 +19,28 @@
   // Example file of how you can use the avalible tools
 
   require_once("class/search.php");
-
+  require_once("class/news.php");
   // Create a search object.
   $search = new Search();
 
-  // Set a town to search. 
+  // Set a town to search.
   $search->town = "Stockholm";
   print "Amount of results with a district search for Södermalm: " . count($search->districtSearch('Södermalm')) . "\n";
 
-  // Make a generous search and show the amount of restuants. 
-  print "Amount of results with with generous search for $search->town " . count($search->_search());
+  // Make a generous search and show the amount of restuants.
+  print "Amount of results with with generous search for $search->town " . count($search->_search()) . "\n";
 
   // Set to strict search
   $search->strict = TRUE;
 
-  // Make a strict search and show the amount of results. 
-  print "Amount of results with with strict search for $search->town " . count($search->_search());
+  // Make a strict search and show the amount of results.
+  print "Amount of results with with strict search for $search->town " . count($search->_search()) . "\n";
 
 
   // Create a news Object
   $news = new News();
 
-  // Lets try a Strict search for a town that have no local XML. 
+  // Lets try a Strict search for a town that have no local XML.
   $news->town = "Solna";
   $all_town_places = $news->getNewsXML(TRUE);
   foreach ($all_town_places as $place) {
@@ -51,7 +51,7 @@
     print " -----\n";
   }
 
-  // Strict search for Stockholm that do have a local xml. 
+  // Strict search for Stockholm that do have a local xml.
   $news->town = "Stockholm";
   $all_town_places = $news->getNewsXML(TRUE);
   foreach ($all_town_places as $place) {
@@ -62,7 +62,7 @@
     print " -----\n";
   }
 
-  // None-strict search for Stockholm so we will use the array of posttowns in Stockholm. 
+  // None-strict search for Stockholm so we will use the array of posttowns in Stockholm.
   $news->town = "Stockholm";
   $all_town_places = $news->getNewsXML();
   foreach ($all_town_places as $place) {

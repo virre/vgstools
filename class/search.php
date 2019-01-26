@@ -32,20 +32,20 @@
      **/
 	class Search extends Veganistan {
 
-		protected $search_uri = "http://www.veganistan.se/?field_adress_locality="; //!< Search URI. 
-		public $strict = FALSE; //!< Defines if search should be strict or not. 
-		public $town = "";  //!< The town to work with. 
-		protected $searchTown = ""; //!< The current town being searched when generous search is used. 
+		protected $search_uri = "http://www.veganistan.se/?field_adress_locality="; //!< Search URI.
+		public $strict = FALSE; //!< Defines if search should be strict or not.
+		public $town = "";  //!< The town to work with.
+		protected $searchTown = ""; //!< The current town being searched when generous search is used.
 
 		/**
 		 * \brief Do the acctual search based on if the strict property is TRUE OR FALSE.
 		 *
-		 * @return Array Returns an array with the result. 
+		 * @return Array Returns an array with the result.
 		 **/
 		public function _search() {
 			if ($this->strict) {
 				return $this->exactSearch();
-			} 
+			}
 			elseif (!$this->strict) {
 				return $this->generousSearch();
 			}
@@ -53,11 +53,11 @@
 
 		/**
 		 * \brief Run an search for jsut the current town.
-		 * 
-		 * @return Array containing the result of search. 
+		 *
+		 * @return Array containing the result of search.
 		 **/
 		private function exactSearch() {
-			$this->searchTown = $this->town; 
+			$this->searchTown = $this->town;
 			return $this->makeQuery();
 		}
 
@@ -67,7 +67,7 @@
 		 * @param string $district.
 		 *   Array key district name for district to search for.
 		 *
-		 * @return splFixedArray containing the places in district. 
+		 * @return splFixedArray containing the places in district.
 		 **/
 		public function districtSearch($district) {
 			$town_results = $this->exactSearch();
@@ -119,9 +119,9 @@
 		 * \brief Make the acctual query to the homepage.
 		 *
 		 * @todo: Make sure to retry untill not 500 on webbrequests as load errors happens.
-		 * 
+		 *
 		 * @return splFixedArray for each place found containg an SplFixedArray of three rows with Name,
-		 *         address and description as there content or bool FALSE if something fails. 
+		 *         address and description as there content or bool FALSE if something fails.
 		 **/
 		private function makeQuery() {
 			if (empty($this->town)) {
@@ -137,7 +137,7 @@
 				foreach ($links as $link) {
 					if (is_array($link)) {
 						foreach ($link as $page) {
-							if ($found[$page]) {
+							if (!empty($found[$page])) {
 								continue;
 							}
 							$uri = "http://www.veganistan.se" . $page;
@@ -154,7 +154,7 @@
 						}
 					}
 					elseif (!is_array($link)) {
-						if ($found[$link]) {
+						if (!empty($found[$link])) {
 							continue;
 						}
 						$uri = "http://www.veganistan.se" . $link;
@@ -166,7 +166,7 @@
 						$content[2] = $this->getDescriptionFromDescription($data);
 						$results[$num] = $content;
 						unset($content);
-						$found[$page] = TRUE;
+						$found[$link] = TRUE;
 						$num++;
 					}
 				}
@@ -185,15 +185,15 @@
 		 * \brief Get all links for a search.
 		 *
 		 * @return Returns an splFixedArray of all resturant urls on multiple pages if the search resulted in an multipage
-		 *         answer or an array of urls if not multipage and FALSE on error. 
+		 *         answer or an array of urls if not multipage and FALSE on error.
 		 **/
 		private function getLinks() {
 			if (!empty($this->searchTown)) {
 				$town = $this->searchTown;
 			} elseif (empty($this->searchTown)) {
-				$town = $this->town;				
+				$town = $this->town;
 			}
-			$content = file_get_contents($this->search_uri . $town);
+			$content = file_get_contents($this->search_uri . urlencode($town));
 			if (!$this->isMultiPage($content)) {
 				if ($data = $this->getLinksFromPage($content)) {
 					return $data;
@@ -203,7 +203,7 @@
 			}
 			elseif ($this->isMultiPage($content)) {
 				$count = $this->amountPages($content);
-				$rest = new splFixedArray($count); 
+				$rest = new splFixedArray($count);
 				if (!$count) {
 					die("No multipages exists, this should not happen");
 				} elseif ($count) {
@@ -219,23 +219,23 @@
 
 					// Clean up the variables we don't need more.
 					// Because trusting php garbage cleaner sounds horrible.
-					$uri = ""; 
+					$uri = "";
 					$content = "";
 					unset($uri);
 					unset($content);
 					return $rest;
 				}
-				return FALSE; 
+				return FALSE;
 			}
 			return FALSE;
 		}
 
-		/** 
+		/**
 		 * \brief Fetch the acctual links to resturants from a string (mostly the content result of a search).
 		 *
-		 * @param $content String that contains the HTML result of a search. 
+		 * @param $content String that contains the HTML result of a search.
 		 * @return Either an array of links to resturants or FALSE if none is found or
-		 *         something goes wrong. 
+		 *         something goes wrong.
 		 **/
 		private function getLinksFromPage($content) {
 			$dom = new DOMDocument;
@@ -259,8 +259,8 @@
 						if (preg_match($pattern, $goal)) {
 							$out_links[] = $goal;
 						}
-					} 
-				} 
+					}
+				}
 			}
 			if (!empty($out_links)) {
 				return $out_links;
@@ -271,7 +271,7 @@
 		/**
 		 * \brief Fetch the content of a page and then send it to getLinksFromPage method to extrapolate links
 		 *
-		 * @param $uri String The URI string to load the content off. 
+		 * @param $uri String The URI string to load the content off.
 		 * @return Array containing the links found on the $uri page or FALSE if none is found or anything goes wrong.
 		 **/
 		private function fetchLinksFromPage($uri) {
@@ -283,11 +283,11 @@
 		}
 
 		/**
-		 * \brief Look at a string and see if it is multipage html-page by looking for pager class. 
+		 * \brief Look at a string and see if it is multipage html-page by looking for pager class.
 		 *
 		 * @param $content String Contains the HTML code of an URI to check if it is a multipage reuslt.
 		 *
-		 * @return Bool True if it is multipage otherwise FALSE. 
+		 * @return Bool True if it is multipage otherwise FALSE.
 		 **/
 		private function isMultiPage($content) {
 			 $dom = new DOMDocument;
@@ -306,7 +306,7 @@
 		 *
 		 * @param $content String Contains the HTML code of an URI to check how many pages it is.
 	     *
-		 * @return Integer Number of pages in pagination. 
+		 * @return Integer Number of pages in pagination.
 		 **/
 		private function amountPages($content) {
 			 $dom = new DOMDocument;

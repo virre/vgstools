@@ -14,7 +14,7 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with vgstools.  If not, see <http://www.gnu.org/licenses/>.*/
+    along with vgstools.  If not, see <https://www.gnu.org/licenses/>.*/
 
   /**
    * @file news.php
@@ -31,20 +31,20 @@
     **/
   class News extends Veganistan {
 
-    public $town = ""; //!< Town to find news for. 
+    public $town = ""; //!< Town to find news for.
 
     /**
-     * \brief Fetch the News XML feed. 
+     * \brief Fetch the News XML feed.
      *
      * @param bool $strict.
-     *  Get strict from town if True otherwise look for posttown arrays for general area. 
+     *  Get strict from town if True otherwise look for posttown arrays for general area.
      *
      * @return Object.
      *  Returns simplexml objects for either all post towns in area or just the strict search ones.
      **/
     public function getNewsXML($strict = FALSE) {
 
-      // If we want all places in a logical city area and not town area. 
+      // If we want all places in a logical city area and not town area.
       if (!$strict) {
         $rawxml = $this->getXML();
         if (!$rawxml) {
@@ -54,36 +54,36 @@
         // Check if an array of post-towns in town exists.
         if ($this->existsTownArray()) {
 
-          // if does set the town array to it. 
+          // if does set the town array to it.
           $array = $this->getTownArray();
         } elseif (!$this->existsTownArray()) {
 
           // otherwise it's just this town
-          $array = array($this->town); 
+          $array = array($this->town);
         }
         return $this->sortOutObjects($rawxml, $array);
       }
 
-      // Lets be strict. 
+      // Lets be strict.
       elseif ($strict) {
 
-        // Check if there is a strict town XML. 
+        // Check if there is a strict town XML.
         if ($this->isTownXML()) {
 
-          // if there is make sure to load it. 
+          // if there is make sure to load it.
           $rawxml = $this->getXML($this->town);
-        } 
+        }
 
-        // But there is none. 
+        // But there is none.
         elseif (!$this->isTownXML()) {
 
-          // So we have to load all. 
+          // So we have to load all.
           $rawxml = $this->getXML();
           if (!$rawxml) {
             die("Something went wrong, please make sure you are connected to the Internet");
           }
 
-          // And just make the sorted out object array just the strict town. 
+          // And just make the sorted out object array just the strict town.
           return $this->sortOutObjects($rawxml, array($this->town));
         }
       }
@@ -91,7 +91,7 @@
     }
 
     /**
-     * \brief Check if XML file name exists for specific town. 
+     * \brief Check if XML file name exists for specific town.
      *
      * @return bool.
      *  True if exists, False if not.
@@ -102,7 +102,7 @@
       }
       $uri = "https://www.veganistan.se/$this->town.xml";
       if ($this->xml_exists($uri)) {
-        return TRUE; 
+        return TRUE;
       }
       return FALSE;
     }
@@ -141,7 +141,7 @@
      *  or false if somethign went wrong and was not handled.
      **/
     private function getXML($value = FALSE) {
-      $uri = "http://www.veganistan.se/";
+      $uri = "https://www.veganistan.se/";
       if (!$value) {
         $uri .= "nyheter.xml";
       }
@@ -149,7 +149,7 @@
         $uri .= strtolower($value) . ".xml";
       }
       if (!$this->xml_exists($uri)) {
-        die("Something went wrong, be sure you are online and that veganistan.se is up");
+	die("Something went wrong, be sure you are online and that veganistan.se is up.\n");
       }
       $xml = simplexml_load_file($uri);
       if (is_object($xml)) {
@@ -165,10 +165,10 @@
      * @param Objct $xmlfile.
      *  The raw simplexml feed from xml file.
      * @param array $town_array.
-     *  The acctuall array of towns to compare with. 
+     *  The acctuall array of towns to compare with.
      *
      * @return array $output.
-     *  Array containing objects of place data in pure text. 
+     *  Array containing objects of place data in pure text.
      **/
     private function sortOutObjects($xmlfile, $town_array) {
       $output = array();
@@ -197,14 +197,14 @@
      * @param string $uri .
      *  The uri to get town from.
      * @param array $towns.
-     *  The town array to compare with. 
+     *  The town array to compare with.
      *
-     * @return bool. 
-     *  Return True if one of the post-towns is the town part of the link otherwise fasle.  
+     * @return bool.
+     *  Return True if one of the post-towns is the town part of the link otherwise fasle.
      **/
     private function isLinkTown($uri, $towns) {
       $towns = array_map("mb_strtolower", $towns);
-      $str = str_replace("http://www.veganistan.se/", "", $uri);
+      $str = str_replace("https://www.veganistan.se/", "", $uri);
       $remove_from_post = strrpos($str, '/');
       $str = substr($str, 0, $remove_from_post);
       if (in_array($str, $towns)) {

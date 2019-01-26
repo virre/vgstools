@@ -29,10 +29,10 @@
    **/
 
   Class Veganistan {
-    
 
-    protected $site_uri = "http://www.veganistan.se"; //!< The general URI to site. 
-    public $townArrays = array("stockholm"); //!< Array contains name of town arrays. 
+
+    protected $site_uri = "http://www.veganistan.se"; //!< The general URI to site.
+    public $townArrays = array("stockholm"); //!< Array contains name of town arrays.
 
     // All Stokholm post towns except thoose in Norrtälje and Nykvarn because thoose would not
     // be included in thinking of Stockholm. Just add them to the array if you disagree..
@@ -56,8 +56,8 @@
       'Sundbyberg', 'Trångsund', 'Tomteboda', 'Tullinge', 'Tumba', 'Tungelsta', 'Tyresö',
       'Täby', 'Upplands Väsby', 'Uttran', 'Utö', 'Vallentuna', 'Vaxholm', 'Vega', 'Vendelsö',
       'Vårby', 'Väddö', 'Vällingby', 'Värmdö', 'Västerhaninge', 'Vätö', 'Åkersberga', 'Årsta',
-      'Årsta Havsbad', 'Älvsjö', 'Älta', 'Ösmo', 'Österhaninge', 'Österskär', 
-    ); //!< Array containg all Post-towns in a wide definition of Stockholm. 
+      'Årsta Havsbad', 'Älvsjö', 'Älta', 'Ösmo', 'Österhaninge', 'Österskär',
+    ); //!< Array containg all Post-towns in a wide definition of Stockholm.
 
 
     public $stockholm_districts = array(
@@ -67,7 +67,7 @@
       'Vasastaden' => array('113'),
       'Östermalm' => array('114', '115'),
       'Södermalm' => array('116', '117', '118'),
-    ); //!< Array containing innercity district and zip-codes. Some of these includes outside areas. 
+    ); //!< Array containing innercity district and zip-codes. Some of these includes outside areas.
 
     /**
      * \brief Check if Zip is in District.
@@ -99,6 +99,9 @@
      *  Return start of zip-code.
      **/
     public function getZipStart($string) {
+      if (!$string) {
+        return ;
+      }
       $splitAddress = preg_split("/\s\s+/", $string);
       $zip_code = $splitAddress[1];
       $zip_start = substr($zip_code, 0, 3);
@@ -106,13 +109,13 @@
     }
 
     /**
-     * \brief Gets the address data from the longer description and returns it as pure text. 
+     * \brief Gets the address data from the longer description and returns it as pure text.
      *
      * @param string $string.
-     *  The HTML string for object to look for address in. 
+     *  The HTML string for object to look for address in.
      *
      * @return string $string.
-     *  Return pure text string of address. 
+     *  Return pure text string of address.
      **/
     public function getAddressFromDescription($string) {
       $outputstring = "";
@@ -131,13 +134,13 @@
     }
 
     /**
-     * \brief Gets the description data from the longer description and returns it as pure text. 
+     * \brief Gets the description data from the longer description and returns it as pure text.
      *
      * @param string $string.
-     *  The HTML string for object to look for description in. 
+     *  The HTML string for object to look for description in.
      *
      * @return string $string.
-     *  Return pure text string of description. 
+     *  Return pure text string of description.
      **/
     public function getDescriptionFromDescription($string) {
       $outputstring = "";
@@ -147,17 +150,17 @@
         $classes = $div->getAttribute('class');
         if (preg_match("/field-type-text-with-summary/", $classes)) {
           $outputstring .= "$div->textContent\n";
-        } 
+        }
       }
       return $outputstring;
     }
 
     /**
-     * \brief Town exists in array. 
+     * \brief Town exists in array.
      *
-     * @return bool. 
-     *  Returns true if we have an array of towns for this town, False otherwise. 
-     **/ 
+     * @return bool.
+     *  Returns true if we have an array of towns for this town, False otherwise.
+     **/
     protected function existsTownArray() {
       if (in_array(strtolower($this->town), $this->townArrays)) {
         return TRUE;
@@ -169,7 +172,7 @@
      * \brief Returns the array of post-towns for the general town you search for.
      *
      * @return mixed.
-     *  Returns the town array if exists, otherwise returns FALSE. 
+     *  Returns the town array if exists, otherwise returns FALSE.
      **/
     protected function getTownArray() {
       if (in_array(strtolower($this->town), $this->townArrays)) {
@@ -179,35 +182,35 @@
       return FALSE;
     }
 
-    /** 
+    /**
      * \brief Check if a link contains town (Could also be used) for other matching.
      *
      * @param $link string Contains the link to check in.
      * @param $town string Contains the string to check with.
-     * @return Bool Returns TRUE if matching otherwise FALSE. 
+     * @return Bool Returns TRUE if matching otherwise FALSE.
      **/
     protected function matchLinkToTown($link, $town) {
       $towns = $this->getTownArray($town);
       if (empty($towns)) {
         if (preg_match("/$town/", $link)) {
-          return TRUE; 
+          return TRUE;
         }
       }
       elseif (!empty($towns)) {
         foreach ($towns as $town) {
           $town = $this->makeWebPattern($town);
           if (preg_match("/$town/", $link)) {
-            return TRUE; 
+            return TRUE;
           }
         }
       }
     }
 
     /**
-     * \brief Make string lovwercase and in otherway match the pages URI structure. 
+     * \brief Make string lovwercase and in otherway match the pages URI structure.
      *
-     * @param $string Original string. 
-     * @return String $string that been lovercased and had local characthers removed. 
+     * @param $string Original string.
+     * @return String $string that been lovercased and had local characthers removed.
      */
     protected function makeWebPattern($string) {
 
@@ -219,10 +222,10 @@
     }
 
     /**
-     * \brief Get the name of resturant by regexping for the page title id in html-string. 
+     * \brief Get the name of resturant by regexping for the page title id in html-string.
      *
      * @param $string String Contains the html element to search through.
-     * @return String of page title if found otherwise boolean False. 
+     * @return String of page title if found otherwise boolean False.
      **/
     protected function getNameFromPage($string) {
       $outputstring = "";
@@ -232,16 +235,16 @@
         $id = $h1->getAttribute('id');
         if (preg_match("/page-title/", $id)) {
           return trim($h1->textContent);
-        } 
+        }
       }
       return FALSE;
     }
 
     /**
-     * \brief Get the opening times of resturant by regexping for the "oppettider-fritext" class in html-string. 
+     * \brief Get the opening times of resturant by regexping for the "oppettider-fritext" class in html-string.
      *
      * @param $string String Contains the html element to search through.
-     * @return String of opening times if found otherwise boolean False. 
+     * @return String of opening times if found otherwise boolean False.
      **/
     protected function getOpeningTimesFromPage($string) {
       $outputstring = "";
@@ -251,17 +254,17 @@
         $classes = $section->getAttribute('class');
         if (preg_match("/field-name-field-oppettider-fritext/", $classes)) {
           var_dump($section);
-        } 
+        }
       }
       return FALSE;
     }
 
     /**
-     * \brief Get the length of both arrays and arrays inside of objects. 
-     *     Usefull for when we use both splFixedArray and arrays inside another array.  
+     * \brief Get the length of both arrays and arrays inside of objects.
+     *     Usefull for when we use both splFixedArray and arrays inside another array.
      *
-     * @param $arr Array contains arrays and links. 
-     * @return Integer Number of content. 
+     * @param $arr Array contains arrays and links.
+     * @return Integer Number of content.
      */
     protected function mixedCount($arr) {
       if (!is_array($arr) && !is_object($arr)) {
@@ -277,7 +280,7 @@
           $count++;
         }
       }
-      return $count; 
+      return $count;
     }
 
   }
