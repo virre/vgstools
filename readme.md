@@ -1,6 +1,10 @@
 VGS Tools 
 ===
 
+**DEPRECATED**
+
+Veganistan has not existed in *years* so its time to archive this project.
+
   Introduction 
   ---
    Veganistan is an excellent resource for Vegans in Stockholm and to some extent the rest of Sweden. However the search function is weak as it is based on the idea that post-towns are the local seperator which is not a well working idea as just Stockholm municipiality have a very high load of them. This in combination with my preference for CLI tools made me start writeing this tool libary. I am now realesing the first version which is an alpha and only contains the possiblity to fetch new data from the 
